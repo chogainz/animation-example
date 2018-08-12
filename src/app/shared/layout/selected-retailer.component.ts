@@ -44,8 +44,12 @@ export class SelectedRetailerComponent implements OnInit {
     });
   }
 
-  openChangeRetailer(event) {
+  openChangeRetailer() {
     this.activeContent = 'changeRetailer';
+    this.dataService.updateState({
+      activeContent: 'changeRetailer',
+      state: this.state
+    });
   }
 
   saveRetailer() {

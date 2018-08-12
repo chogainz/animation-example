@@ -4,13 +4,13 @@
 
       <div class="col-5">
         <div class="d-flex align-items-center justify-content-center m-2">
-          <div class="m-2">Retailer</div>
+          <div class="mr-2">Retailer</div>
 
           <div class="d-flex align-items-center justify-content-center profile-pic">
 
             <mat-icon> account_circle</mat-icon>
           </div>
-          <div class="m-2">{{ retailer }}</div>
+          <div class="ml-2">{{ retailer }}</div>
 
           <button mat-button color="primary" class="d-flex justify-content-center toggle-btn" [disabled]="disableButton" (click)="toggle($event)">
             <mat-icon>{{ state?'keyboard_arrow_up':'keyboard_arrow_down' }}</mat-icon>
