@@ -1,0 +1,63 @@
+<div style="background:white; border: 1px solid black; margin-top:1px; border-top:0" [@openClose]="state" (@openClose.done)="animationDone($event)">
+
+  <div *ngIf="activeContent === 'selectedRetailer'" style="padding:10px;">
+
+    <div class="d-flex flex-row justify-content-between">
+
+      <div class="flex-fill d-flex justify-content-center align-items-center">
+        <button mat-raised-button (click)="openChangeRetailer($event)">CHANGE RETAILER</button>
+      </div>
+
+      <div class="flex-fill">
+
+      </div>
+
+      <div class="flex-fill d-flex justify-content-center">
+        <div class="m-1" style="background:black; width:150px; height:150px;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div *ngIf="activeContent === 'changeRetailer'" style="padding:10px;">
+
+    <div class="d-flex flex-row justify-content-between">
+      <div>
+        <label class="font-weight-bold">Postcode</label>
+        <input class="m-1" [formControl]="postcode">
+      </div>
+      <div>
+        <label class="font-weight-bold">Distance</label>
+        <select class="m-1">
+          <option>25</option>
+          <option>50</option>
+          <option>75</option>
+          <option>100</option>
+        </select>
+      </div>
+      <div>
+        <button mat-raised-button (click)="saveRetailer()">SAVE RETAILER</button>
+      </div>
+    </div>
+
+    <div class="d-flex flex-row justify-content-between">
+
+      <div class="flex-fill">
+        <span class="font-weight-bold"> selected Retailer</span> {{ selectedRetailer}}
+      </div>
+
+      <div class="flex-fill">
+        <ul>
+          <li style="cursor: pointer; list-style: none;" (click)="selectedRetailer = retailer" *ngFor="let retailer of retailers">{{ retailer }}</li>
+        </ul>
+      </div>
+
+      <div class="flex-fill">
+
+      </div>
+
+      <div class="flex-fill d-flex justify-content-center"></div>
+      <div class="m-1" style="background:black; width:150px; height:150px;"></div>
+    </div>
+  </div>
+</div>
