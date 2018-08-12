@@ -26,7 +26,7 @@ export class SelectedRetailerComponent implements OnInit {
   state = false;
   activeContent: string;
   retailers: any;
-  selectedRetailer: string;
+  selectedRetailer = 'Funky Chicken Westbridges';
 
   postcode: FormControl = new FormControl('', Validators.required);
   distance: FormControl = new FormControl('', Validators.required);
@@ -55,6 +55,7 @@ export class SelectedRetailerComponent implements OnInit {
       state: this.state
     });
     this.dataService.updateRetailer(this.selectedRetailer);
+    this.retailers = [];
   }
 
   animationDone(event) {

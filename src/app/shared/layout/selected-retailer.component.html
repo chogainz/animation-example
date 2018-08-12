@@ -1,34 +1,46 @@
-<div style="background:white; border: 1px solid black; margin-top:1px; border-top:0" [@openClose]="state" (@openClose.done)="animationDone($event)">
+<div class="selected-retailer-container" [@openClose]="state" (@openClose.done)="animationDone($event)">
 
-  <div *ngIf="activeContent === 'selectedRetailer'" style="padding:10px;">
-
+  <div *ngIf="activeContent === 'selectedRetailer'" class="p-2 selected-retailer">
     <div class="d-flex flex-row justify-content-between">
 
-      <div class="flex-fill d-flex justify-content-center align-items-center">
-        <button mat-raised-button (click)="openChangeRetailer($event)">CHANGE RETAILER</button>
+      <div class="divide flex-fill d-flex justify-content-center align-items-center">
+
+        <div class=" d-flex justify-content-center align-items-center profile-pic">
+          <mat-icon style="width:50px;height:50px; font-size: 50px;"> account_circle</mat-icon>
+        </div>
+
+        <button mat-button color="primary" (click)="openChangeRetailer($event)">Change Retailer</button>
+        {{ selectedRetailer }}
       </div>
 
-      <div class="flex-fill">
+      <div class="flex-fill d-flex flex-column justify-content-center align-items-center divide">
+        <div class="font-weight-bold">Address</div>
+        <div>33 River Drive</div>
+        <div>Stafford</div>
+        <div>ST18 9DF</div>
 
       </div>
 
-      <div class="flex-fill d-flex justify-content-center">
-        <div class="m-1" style="background:black; width:150px; height:150px;"></div>
+      <div class="flex-fill d-flex justify-content-center divide">
+        <div class="font-weight-bold">Map</div>
+        <div class="m-1 map">
+          <img width="150" height="150" src="../../../assets/map.jpg" alt="">
+        </div>
       </div>
     </div>
 
   </div>
 
-  <div *ngIf="activeContent === 'changeRetailer'" style="padding:10px;">
+  <div *ngIf="activeContent === 'changeRetailer'" class="p-2 change-retailer">
 
-    <div class="d-flex flex-row justify-content-between">
+    <div class="d-flex flex-row justify-content-between row-one">
       <div>
         <label class="font-weight-bold">Postcode</label>
-        <input class="m-1" [formControl]="postcode">
+        <input class="m-2" [formControl]="postcode">
       </div>
       <div>
         <label class="font-weight-bold">Distance</label>
-        <select class="m-1">
+        <select class="m-2">
           <option>25</option>
           <option>50</option>
           <option>75</option>
@@ -36,28 +48,29 @@
         </select>
       </div>
       <div>
-        <button mat-raised-button (click)="saveRetailer()">SAVE RETAILER</button>
+        <button mat-button (click)="saveRetailer()">Save Retailer</button>
       </div>
     </div>
 
     <div class="d-flex flex-row justify-content-between">
 
-      <div class="flex-fill">
-        <span class="font-weight-bold"> selected Retailer</span> {{ selectedRetailer}}
+      <div class="divide flex-fill d-flex justify-content-center align-items-center">
+        <span class="font-weight-bold p-2"> selected Retailer</span> {{ selectedRetailer}}
       </div>
 
-      <div class="flex-fill">
-        <ul>
-          <li style="cursor: pointer; list-style: none;" (click)="selectedRetailer = retailer" *ngFor="let retailer of retailers">{{ retailer }}</li>
+      <div class="divide flex-fill d-flex flex-column justify-content-center align-items-center">
+
+        <ul class="retailer-list">
+          <li class="font-weight-bold">Retailer List</li>
+          <li (click)="selectedRetailer = retailer" *ngFor="let retailer of retailers">{{ retailer }}</li>
         </ul>
       </div>
 
-      <div class="flex-fill">
-
+      <div class="divide flex-fill d-flex flex-column justify-content-center"></div>
+      <div class="font-weight-bold">Map</div>
+      <div class="m-1 map">
+        <img width="150" height="150" src="../../../assets/map.jpg" alt="">
       </div>
-
-      <div class="flex-fill d-flex justify-content-center"></div>
-      <div class="m-1" style="background:black; width:150px; height:150px;"></div>
     </div>
   </div>
 </div>
