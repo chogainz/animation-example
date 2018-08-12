@@ -37,9 +37,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.dataService.state.pipe(debounceTime(1)).subscribe(data => {
       this.disableButton = false;
-      console.log('disable',data);
       if (data.activeContent === 'changeRetailer') {
-
         this.disableButton = true;
         this.state = data.state;
       }
